@@ -17,16 +17,31 @@ export default {
 
     console.log(this.paper.view.size.width)
 
-    const radius = 40
-    var centerX = Math.round(this.paper.view.size.width - radius) / 2
-    var centerY = Math.round(this.paper.view.size.height - radius) / 2
-    var circle = new this.paper.Path.Circle({
-      center: new this.paper.Point(centerX, centerY),
+    const radius = 50
+    const marginX = 25
+
+    var iconX = Math.round(radius + marginX)
+    var iconY = Math.round(this.paper.view.size.height / 2)
+
+    var icon = new this.paper.Path.Circle({
+      center: new this.paper.Point(iconX, iconY),
       radius: radius,
       strokeColor: new this.paper.Color(1, 0, 0),
     })
 
-    var layer = new this.paper.Layer(circle)
+    var text = new this.paper.PointText(
+      new this.paper.Point(iconX * 2, iconY + 15)
+    )
+    text.content = 'MyCompany'
+    text.style = {
+      fontFamily: 'Courier New',
+      fontWeight: 'bold',
+      fontSize: 60,
+      fillColor: 'red',
+      justification: 'left',
+    }
+
+    // var layer = new this.paper.Layer(icon)
   },
 }
 </script>

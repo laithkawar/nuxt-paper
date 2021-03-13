@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
-      <h1 class="title mt-20">nuxt-paper</h1>
+      <Logo class="border border-blue-500" />
+      <h1 class="title mt-5">nuxt-paper</h1>
     </div>
   </div>
 </template>

@@ -45,7 +45,7 @@ export default {
     var text = new this.paper.PointText(
       new this.paper.Point(textX, iconY * 1.3)
     )
-    text.content = 'Test Co'
+    text.content = 'Test'
     text.style = {
       fontFamily: 'Ubuntu',
       fontWeight: 'bold',

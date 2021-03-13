@@ -1,6 +1,8 @@
 <template>
   <!-- This is the canvas controlled by Paper.JS -->
-  <canvas width="550" height="360" resize id="view" ref="view"></canvas>
+  <div class="flex justify-center content-center">
+    <canvas width="300" resize id="view" ref="view"></canvas>
+  </div>
 </template>
 
 <script>
@@ -17,10 +19,10 @@ export default {
 
     console.log(this.paper.view.size.width)
 
-    const radius = 50
-    const marginX = 25
+    const radius = 40
+    const marginX = 20
 
-    var iconX = Math.round(radius + marginX)
+    var iconX = Math.round(radius + 1)
     var iconY = Math.round(this.paper.view.size.height / 2)
 
     var icon = new this.paper.Path.Circle({
@@ -29,19 +31,34 @@ export default {
       strokeColor: new this.paper.Color(1, 0, 0),
     })
 
+    var textX = radius * 2 + marginX
+    var textY = iconY - radius
+
+    // Create a rectangle shaped path with its top left corner
+    // at {x: 80, y: 25} and a size of {width: 75, height: 50}:
+    var pathText = new this.paper.Path.Rectangle({
+      point: [textX, textY],
+      size: [this.paper.view.size.width - textX, radius * 2],
+      // fillColor: 'white',
+    })
+
     var text = new this.paper.PointText(
-      new this.paper.Point(iconX * 2, iconY + 15)
+      new this.paper.Point(textX, iconY * 1.3)
     )
-    text.content = 'MyCompany'
+    text.content = 'Test Co'
     text.style = {
-      fontFamily: 'Courier New',
+      fontFamily: 'Ubuntu',
       fontWeight: 'bold',
-      fontSize: 60,
+      fontSize: 75,
       fillColor: 'red',
       justification: 'left',
     }
 
-    // var layer = new this.paper.Layer(icon)
+    // Fit the circlePath to the bounding rectangle of
+    // the rectangular path:
+    console.log(text.bounds)
+    if (text.bounds.width > pathText.bounds.width)
+      text.fitBounds(pathText.bounds)
   },
 }
 </script>

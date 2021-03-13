@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <Logo class="border border-blue-500" />
+      <Logo class="border border-blue-500 bg-gray-100" />
       <h1 class="title mt-5">nuxt-paper</h1>
     </div>
   </div>
